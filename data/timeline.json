@@ -1,0 +1,229 @@
+{
+  "eras": [
+    {
+      "id": "pioneiros",
+      "nome": "Pioneiros",
+      "periodo": "1951–1959",
+      "descricao": "Os primeiros programas capazes de jogar contra uma pessoa, criados em computadores acadêmicos décadas antes dos videogames existirem como indústria."
+    },
+    {
+      "id": "arcade",
+      "nome": "Arcade",
+      "periodo": "1978–1980",
+      "descricao": "A era das máquinas de fliperama, onde regras simples e padrões de movimento criavam a ilusão de oponentes inteligentes com hardware muito limitado."
+    },
+    {
+      "id": "3d-e-taticas",
+      "nome": "3D e Táticas",
+      "periodo": "1997–2005",
+      "descricao": "Computadores passam a vencer campeões humanos em jogos de tabuleiro e os jogos 3D introduzem inimigos que se posicionam, cooperam e planejam ações."
+    },
+    {
+      "id": "mundos-vivos",
+      "nome": "Mundos Vivos",
+      "periodo": "2000–2014",
+      "descricao": "Jogos simulam mundos inteiros: objetos e personagens com necessidades, rotinas, aprendizado simples e sistemas que reagem ao comportamento do jogador."
+    },
+    {
+      "id": "aprendizado-de-maquina",
+      "nome": "Aprendizado de Máquina",
+      "periodo": "2016–2019",
+      "descricao": "Redes neurais e aprendizado por reforço em larga escala superam profissionais humanos em jogos considerados computacionalmente muito complexos."
+    },
+    {
+      "id": "ia-generativa",
+      "nome": "IA Generativa",
+      "periodo": "2023–presente",
+      "descricao": "Modelos de linguagem passam a gerar diálogo, comportamento e conteúdo de forma dinâmica, abrindo caminho para NPCs conversacionais e narrativas adaptativas."
+    }
+  ],
+  "marcos": [
+    {
+      "id": "nimrod-1951",
+      "ano": 1951,
+      "titulo": "Nimrod",
+      "era": "pioneiros",
+      "resumo": "Computador construído para jogar Nim publicamente e mostrar que máquinas podiam tomar decisões.",
+      "descricao": "Nimrod foi um computador construído pela empresa britânica Ferranti especificamente para jogar Nim, um jogo matemático de retirar palitos em pilhas. Ele foi exibido no Festival of Britain em 1951 e depois em Berlim, onde chegou a vencer o ministro da economia alemão da época em uma partida pública.\n\nO Nimrod não usava aprendizado: suas jogadas seguiam a estratégia matemática ótima do Nim, já conhecida havia décadas, implementada como um conjunto fixo de regras. Ainda assim, foi uma das primeiras vezes que o público em geral viu uma máquina 'decidir' algo em tempo real, e por isso é considerado um marco simbólico do início da IA em jogos.",
+      "tecnica": "regras fixas (estratégia matemática do Nim)",
+      "tags": ["pioneiros", "regras-fixas", "nim", "hardware-dedicado"],
+      "fontes": ["https://en.wikipedia.org/wiki/Nimrod_(computer)"]
+    },
+    {
+      "id": "oxo-1952",
+      "ano": 1952,
+      "titulo": "OXO (jogo da velha)",
+      "era": "pioneiros",
+      "resumo": "Uma das primeiras versões digitais de jogo da velha, rodando no computador EDSAC.",
+      "descricao": "OXO (também chamado de Noughts and Crosses) foi criado por Alexander S. Douglas em 1952 como parte de sua tese de doutorado em Cambridge, rodando no computador EDSAC. O jogador via o tabuleiro em um tubo de raios catódicos e fazia jogadas discando um telefone rotatório conectado à máquina.\n\nA 'inteligência' do OXO era uma árvore de decisão simples que cobria as poucas milhares de posições possíveis do jogo da velha, sempre escolhendo a melhor jogada disponível. É citado como um dos primeiros jogos eletrônicos com gráficos exibidos em tela e um exemplo claro de que busca exaustiva em jogos pequenos já era viável nos anos 1950.",
+      "tecnica": "busca exaustiva em árvore de decisão",
+      "tags": ["pioneiros", "busca", "jogo-da-velha", "edsac"],
+      "fontes": ["https://en.wikipedia.org/wiki/OXO"]
+    },
+    {
+      "id": "damas-arthur-samuel-1959",
+      "ano": 1959,
+      "titulo": "Damas de Arthur Samuel",
+      "era": "pioneiros",
+      "resumo": "Programa de damas da IBM que melhorava jogando contra si mesmo, popularizando o termo 'machine learning'.",
+      "descricao": "Arthur Samuel, pesquisador da IBM, desenvolveu ao longo dos anos 1950 um programa capaz de jogar damas nos computadores IBM 701 e 704. O programa usava busca minimax combinada com uma função de avaliação que era ajustada automaticamente conforme o programa jogava partidas contra si mesmo, guardando posições e resultados anteriores.\n\nEsse processo de auto-ajuste é considerado um dos primeiros exemplos práticos de aprendizado de máquina, termo que o próprio Samuel ajudou a popularizar em um artigo de 1959. O programa chegou a vencer jogadores amadores fortes, mostrando publicamente que um sistema podia melhorar seu desempenho sem que um humano reprogramasse suas regras a cada partida.",
+      "tecnica": "busca minimax com função de avaliação ajustada por aprendizado",
+      "tags": ["pioneiros", "aprendizado-de-maquina", "damas", "minimax", "ibm"],
+      "fontes": ["https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)"]
+    },
+    {
+      "id": "space-invaders-1978",
+      "ano": 1978,
+      "titulo": "Space Invaders",
+      "era": "arcade",
+      "resumo": "Os alienígenas aceleram conforme são destruídos, criando a sensação de dificuldade crescente e inteligência.",
+      "descricao": "Space Invaders, criado por Tomohiro Nishikado, colocava o jogador contra fileiras de alienígenas que se moviam em bloco e desciam gradualmente em direção à base do jogador. O comportamento seguia um padrão fixo e previsível, sem qualquer forma de decisão adaptativa.\n\nO efeito de 'ficarem mais espertos e rápidos' conforme menos inimigos restavam era, na verdade, uma consequência do hardware: com menos alienígenas para processar, o loop do jogo rodava mais rápido. Ainda assim, o resultado prático — dificuldade crescente e sensação de urgência — é citado como um exemplo clássico de como limitações técnicas podiam simular comportamento inteligente sem nenhuma IA real por trás.",
+      "tecnica": "padrão de movimento fixo (efeito emergente de hardware)",
+      "tags": ["arcade", "regras-fixas", "space-invaders"],
+      "fontes": ["https://www.computerhistory.org/timeline/graphics-games/", "https://en.wikipedia.org/wiki/Space_Invaders"]
+    },
+    {
+      "id": "pac-man-1980",
+      "ano": 1980,
+      "titulo": "Pac-Man",
+      "era": "arcade",
+      "resumo": "Cada um dos quatro fantasmas tem um comportamento de perseguição diferente, criando personalidades distintas.",
+      "descricao": "Pac-Man, criado por Toru Iwatani, é um dos exemplos mais citados de IA em jogos clássicos. Os quatro fantasmas — Blinky, Pinky, Inky e Clyde — usam a mesma estrutura básica de máquina de estados (perseguir, dispersar, fugir), mas cada um calcula seu alvo de perseguição de um jeito diferente: Blinky mira direto na posição de Pac-Man, Pinky mira alguns espaços à frente dele, Inky combina a posição de Blinky com a de Pac-Man, e Clyde alterna entre perseguir e recuar quando está perto.\n\nEsse conjunto de regras simples, sem nenhum aprendizado envolvido, é suficiente para criar a impressão de que cada fantasma tem uma 'personalidade' própria — um exemplo clássico de comportamento aparentemente inteligente emergindo de máquinas de estado bem projetadas, técnica ainda muito usada em jogos atuais.",
+      "tecnica": "máquina de estados com alvos de perseguição distintos",
+      "tags": ["arcade", "maquina-de-estados", "pac-man", "fantasmas"],
+      "fontes": ["https://pacman.holenet.info/"]
+    },
+    {
+      "id": "deep-blue-1997",
+      "ano": 1997,
+      "titulo": "Deep Blue",
+      "era": "3d-e-taticas",
+      "resumo": "O computador da IBM derrotou o campeão mundial Garry Kasparov em uma partida completa de xadrez.",
+      "descricao": "Deep Blue foi um supercomputador da IBM projetado especificamente para jogar xadrez em alto nível, capaz de avaliar cerca de 200 milhões de posições por segundo usando busca em árvore (minimax com poda alfa-beta) e uma função de avaliação afinada por especialistas humanos em xadrez.\n\nEm maio de 1997, o Deep Blue venceu o então campeão mundial Garry Kasparov em uma partida de seis jogos, se tornando o primeiro sistema a derrotar um campeão mundial reinante em condições de torneio padrão. O evento teve enorme repercussão pública e é frequentemente citado como o momento em que 'força bruta computacional' — busca massiva combinada a hardware dedicado — provou ser capaz de superar a intuição humana em domínios bem definidos.",
+      "tecnica": "busca em árvore com poda alfa-beta e hardware dedicado",
+      "tags": ["3d-e-taticas", "busca", "xadrez", "ibm", "kasparov"],
+      "fontes": ["https://www.ibm.com/history/deep-blue"]
+    },
+    {
+      "id": "half-life-1998",
+      "ano": 1998,
+      "titulo": "Half-Life",
+      "era": "3d-e-taticas",
+      "resumo": "Soldados inimigos coordenam ataques em esquadrão, usam cobertura e se comunicam entre si.",
+      "descricao": "Half-Life, da Valve, é um marco na IA de inimigos em jogos de tiro em primeira pessoa. Os soldados do esquadrão militar inimigo não agem isoladamente: eles avaliam linhas de visão, buscam cobertura, jogam granadas para forçar o jogador a se mover e coordenam flanqueamentos entre si, simulando comunicação de esquadrão.\n\nEssa combinação de máquina de estados individual com um nível extra de coordenação em grupo elevou a expectativa do público sobre o que 'IA de inimigo' deveria fazer em jogos 3D, influenciando diretamente o design de FPS por anos seguintes.",
+      "tecnica": "máquina de estados individual com coordenação de esquadrão",
+      "tags": ["3d-e-taticas", "maquina-de-estados", "fps", "esquadrao", "half-life"],
+      "fontes": ["https://en.wikipedia.org/wiki/Half-Life_(video_game)"]
+    },
+    {
+      "id": "the-sims-2000",
+      "ano": 2000,
+      "titulo": "The Sims",
+      "era": "mundos-vivos",
+      "resumo": "Objetos do cenário anunciam ao personagem quais necessidades eles satisfazem, em vez do personagem 'saber' tudo sozinho.",
+      "descricao": "The Sims, da Maxis, popularizou a arquitetura de 'objetos inteligentes' (smart objects): em vez de programar cada personagem para saber usar cada item do jogo, os próprios objetos anunciam quais necessidades satisfazem (fome, higiene, diversão) e o quanto. O personagem escolhe entre essas opções anunciadas com base em suas necessidades atuais.\n\nEssa abordagem tornou o mundo do jogo muito mais fácil de expandir — novos objetos podem ser adicionados sem reescrever a IA dos personagens — e é um exemplo influente de como estruturar a tomada de decisão em jogos de simulação de vida, técnica que inspirou diversos jogos de mundo aberto e simulação posteriores.",
+      "tecnica": "sistema de necessidades com objetos que anunciam utilidade (smart objects)",
+      "tags": ["mundos-vivos", "simulacao", "smart-objects", "the-sims"],
+      "fontes": ["https://en.wikipedia.org/wiki/The_Sims"]
+    },
+    {
+      "id": "black-and-white-2001",
+      "ano": 2001,
+      "titulo": "Black & White",
+      "era": "mundos-vivos",
+      "resumo": "A criatura do jogador aprende com exemplos e reações do jogador, mudando de comportamento ao longo do tempo.",
+      "descricao": "Black & White, da Lionhead Studios, colocava o jogador no papel de uma divindade que treina uma grande criatura. A criatura usa uma rede de crenças e desejos combinada a aprendizado por reforço simples: quando o jogador pune ou recompensa uma ação (por exemplo, bater na criatura ou fazer carinho), o comportamento futuro dela muda de acordo.\n\nO resultado era uma criatura que podia se tornar gentil ou destrutiva dependendo de como era tratada, sem que o jogador editasse regras diretamente — um dos primeiros exemplos populares de um jogo comercial em que o comportamento do personagem central era moldado observavelmente pelo jogador ao longo de muitas horas.",
+      "tecnica": "aprendizado por reforço simples sobre rede de crenças e desejos",
+      "tags": ["mundos-vivos", "aprendizado-por-reforco", "black-and-white", "criatura"],
+      "fontes": ["https://en.wikipedia.org/wiki/Black_%26_White_(video_game)"]
+    },
+    {
+      "id": "halo-2-2004",
+      "ano": 2004,
+      "titulo": "Halo 2",
+      "era": "3d-e-taticas",
+      "resumo": "Ajudou a popularizar o uso de árvores de comportamento (behavior trees) em jogos AAA.",
+      "descricao": "Halo 2, da Bungie, é frequentemente citado como um dos jogos que ajudaram a popularizar árvores de comportamento (behavior trees) como estrutura para organizar decisões de IA em jogos de grande orçamento, complementando as máquinas de estado usadas até então.\n\nUma árvore de comportamento organiza ações em uma hierarquia de nós (sequências, seletores, condições), tornando mais fácil para os designers criarem e ajustarem comportamentos complexos — como esquadrões inimigos que avaliam cobertura, saúde e posição do jogador — sem reescrever máquinas de estado inteiras a cada mudança.",
+      "tecnica": "árvore de comportamento (behavior tree)",
+      "tags": ["3d-e-taticas", "behavior-tree", "halo", "fps"],
+      "fontes": ["https://en.wikipedia.org/wiki/Halo_2"]
+    },
+    {
+      "id": "fear-2005",
+      "ano": 2005,
+      "titulo": "F.E.A.R.",
+      "era": "3d-e-taticas",
+      "resumo": "Os inimigos planejam sequências de ações para atingir objetivos, em vez de seguir apenas roteiros fixos.",
+      "descricao": "F.E.A.R., da Monolith Productions, ficou conhecido pela IA de seus soldados inimigos, desenvolvida por Jeff Orkin usando GOAP (Goal-Oriented Action Planning, ou planejamento de ações orientado a objetivos). Em vez de seguir uma sequência fixa de comportamentos, cada inimigo escolhe um objetivo (como 'eliminar o jogador' ou 'buscar cobertura') e planeja dinamicamente uma sequência de ações disponíveis para alcançá-lo, considerando o estado atual do mundo.\n\nIsso permitia comportamentos que pareciam improvisados e táticos — like inimigos chutando móveis, avisando uns aos outros e reagindo a granadas de formas variadas — sem que cada situação precisasse ser programada manualmente à mão. GOAP se tornou uma técnica influente e ainda estudada em IA de jogos.",
+      "tecnica": "GOAP (Goal-Oriented Action Planning)",
+      "tags": ["3d-e-taticas", "goap", "planejamento", "fear", "fps"],
+      "fontes": ["https://en.wikipedia.org/wiki/F.E.A.R._(video_game)"]
+    },
+    {
+      "id": "oblivion-2006",
+      "ano": 2006,
+      "titulo": "The Elder Scrolls IV: Oblivion",
+      "era": "mundos-vivos",
+      "resumo": "O sistema Radiant AI dá rotinas e necessidades a cada NPC do mundo aberto.",
+      "descricao": "Oblivion, da Bethesda, introduziu o sistema Radiant AI, que atribui a cada NPC do mundo aberto uma rotina diária (dormir, comer, trabalhar, socializar) e um conjunto de necessidades e objetivos que o personagem tenta satisfazer de forma relativamente autônoma, escolhendo ações e caminhos para isso.\n\nEm vez de posições e horários fixos para cada personagem, o sistema decide dinamicamente como cada NPC passa o dia dentro das regras estabelecidas, dando a sensação de um mundo vivo que continua existindo mesmo quando o jogador não está olhando diretamente para uma área — uma abordagem influente para jogos de mundo aberto que vieram depois.",
+      "tecnica": "planejamento de rotinas e necessidades por NPC (Radiant AI)",
+      "tags": ["mundos-vivos", "mundo-aberto", "radiant-ai", "npc", "oblivion"],
+      "fontes": ["https://en.wikipedia.org/wiki/The_Elder_Scrolls_IV:_Oblivion"]
+    },
+    {
+      "id": "left-4-dead-2008",
+      "ano": 2008,
+      "titulo": "Left 4 Dead",
+      "era": "mundos-vivos",
+      "resumo": "O 'AI Director' ajusta em tempo real o número de inimigos e itens conforme a tensão dos jogadores.",
+      "descricao": "Left 4 Dead, da Valve, introduziu o conceito de 'AI Director': um sistema separado da IA dos próprios zumbis que monitora o desempenho e o estresse estimado dos jogadores (baseado em variáveis como saúde, munição e ritmo de combate) e ajusta dinamicamente o ritmo da partida, controlando onde e quantos inimigos aparecem, e quando dar momentos de alívio.\n\nEm vez de um nível fixo de dificuldade, o AI Director tenta criar um arco de tensão e alívio parecido com um filme de terror, tornando cada partida diferente mesmo no mesmo mapa. A ideia influenciou diversos jogos posteriores que buscam ajustar dificuldade e ritmo de forma dinâmica.",
+      "tecnica": "sistema de direção dinâmica de dificuldade e ritmo (AI Director)",
+      "tags": ["mundos-vivos", "ai-director", "dificuldade-dinamica", "left-4-dead"],
+      "fontes": ["https://en.wikipedia.org/wiki/Left_4_Dead"]
+    },
+    {
+      "id": "alien-isolation-2014",
+      "ano": 2014,
+      "titulo": "Alien: Isolation",
+      "era": "mundos-vivos",
+      "resumo": "Duas IAs separadas — uma 'diretora' e uma do próprio Xenomorfo — trabalham juntas para criar tensão sem trapacear.",
+      "descricao": "Alien: Isolation, da Creative Assembly, usa duas inteligências artificiais que trabalham em conjunto. Uma IA 'diretora' sabe aproximadamente onde o jogador está e guia sutilmente o Xenomorfo para áreas próximas, garantindo que ele nunca fique longe demais por muito tempo. Já a IA do próprio Xenomorfo não tem acesso direto à posição do jogador: ela usa sentidos simulados (visão, audição) e uma máquina de estados que registra pistas — como o último lugar onde ouviu um barulho — para caçar de forma que pareça justa e assustadora.\n\nEssa separação entre uma camada que ajusta o ritmo do jogo e outra que efetivamente 'joga' de forma sensorial e crível é considerada um dos designs de IA de terror mais sofisticados já lançados comercialmente, equilibrando imprevisibilidade com a sensação de perseguição inteligente.",
+      "tecnica": "IA diretora combinada a máquina de estados sensorial (sem acesso direto à posição do jogador)",
+      "tags": ["mundos-vivos", "horror", "maquina-de-estados", "xenomorfo", "alien-isolation"],
+      "fontes": ["https://en.wikipedia.org/wiki/Alien:_Isolation"]
+    },
+    {
+      "id": "alphago-2016",
+      "ano": 2016,
+      "titulo": "AlphaGo",
+      "era": "aprendizado-de-maquina",
+      "resumo": "Combinando redes neurais, busca e aprendizado por reforço, venceu o campeão Lee Sedol por 4 a 1 no jogo Go.",
+      "descricao": "AlphaGo, desenvolvido pela DeepMind, foi o primeiro programa a derrotar um campeão mundial de Go, jogo de tabuleiro considerado muito mais complexo que o xadrez por ter um número de posições possíveis maior do que o de átomos no universo observável, o que torna busca por força bruta inviável.\n\nO sistema combinava redes neurais profundas treinadas em partidas humanas, busca em árvore Monte Carlo e aprendizado por reforço, jogando partidas contra si mesmo para se aperfeiçoar. Em março de 2016, o AlphaGo venceu o campeão sul-coreano Lee Sedol por 4 partidas a 1, um resultado que a comunidade de IA não esperava tão cedo e que se tornou um marco simbólico do avanço do aprendizado profundo.",
+      "tecnica": "redes neurais profundas + busca em árvore Monte Carlo + aprendizado por reforço",
+      "tags": ["aprendizado-de-maquina", "redes-neurais", "aprendizado-por-reforco", "go", "alphago", "deepmind"],
+      "fontes": ["https://deepmind.google/research/alphago/", "https://ai100.stanford.edu/2016-report"]
+    },
+    {
+      "id": "openai-five-alphastar-2019",
+      "ano": 2019,
+      "titulo": "OpenAI Five e AlphaStar",
+      "era": "aprendizado-de-maquina",
+      "resumo": "Sistemas de aprendizado por reforço em larga escala venceram jogadores profissionais em Dota 2 e StarCraft II.",
+      "descricao": "Em 2019, dois projetos mostraram que o aprendizado por reforço em larga escala funcionava em jogos muito mais complexos e caóticos que jogos de tabuleiro. O OpenAI Five, da OpenAI, aprendeu a jogar Dota 2 em equipe treinando por meio de milhares de anos de partidas simuladas contra si mesmo, e venceu uma equipe de campeões mundiais em uma partida de exibição.\n\nNo mesmo ano, o AlphaStar, da DeepMind, alcançou nível Grandmaster em StarCraft II — um jogo de estratégia em tempo real com informação incompleta e um espaço de ações enorme — combinando aprendizado por imitação de replays humanos com aprendizado por reforço multiagente. Os dois casos reforçaram que técnicas de aprendizado por reforço podiam lidar com decisões em tempo real, trabalho em equipe e informação parcial, indo muito além de jogos de tabuleiro com informação completa.",
+      "tecnica": "aprendizado por reforço multiagente em larga escala",
+      "tags": ["aprendizado-de-maquina", "aprendizado-por-reforco", "dota2", "starcraft2", "openai", "deepmind"],
+      "fontes": ["https://en.wikipedia.org/wiki/OpenAI_Five", "https://en.wikipedia.org/wiki/AlphaStar_(software)"]
+    },
+    {
+      "id": "npcs-llm-2023",
+      "ano": 2023,
+      "titulo": "Agentes generativos e NPCs com LLM",
+      "era": "ia-generativa",
+      "resumo": "Modelos de linguagem começam a dar a NPCs memória, personalidade e diálogo gerado dinamicamente.",
+      "descricao": "A partir de 2023, pesquisadores e estúdios passaram a experimentar o uso de modelos de linguagem (LLMs) para controlar personagens não-jogáveis. Um trabalho influente foi o artigo 'Generative Agents: Interactive Simulacra of Human Behavior' (Park et al., 2023), que simulou uma pequena cidade de personagens controlados por LLM, cada um com memória de longo prazo, planejamento diário e reflexões próprias, gerando comportamentos sociais emergentes sem serem explicitamente programados.\n\nNa indústria de jogos, diversas empresas passaram a explorar NPCs que conversam livremente por texto ou voz gerada, mantendo alguma personalidade e contexto, em vez de escolher entre um número fixo de falas pré-gravadas. A técnica ainda enfrenta desafios como custo computacional, consistência de personagem e controle de conteúdo, mas representa a fronteira mais recente da história da IA em jogos até o momento.",
+      "tecnica": "modelos de linguagem (LLM) com memória e planejamento",
+      "tags": ["ia-generativa", "llm", "npc", "agentes-generativos", "2023"],
+      "fontes": ["https://arxiv.org/abs/2304.03442"]
+    }
+  ]
+}
