@@ -53,7 +53,6 @@ Os testes nunca chamam a API da Anthropic de verdade — `app/services/llm.py`
 
 ```
 histor-ia-backend/
-├── CLAUDE.md               # instruções para o Claude Code trabalhar neste repo
 ├── CHANGELOG.md
 ├── docs/API.md             # contrato oficial com o frontend
 ├── data/timeline.json      # base de conhecimento (eras + marcos históricos)
