@@ -4,6 +4,32 @@ Todas as mudanças relevantes de rotas, payloads ou formato de resposta da
 API são registradas aqui, no mesmo commit em que acontecem — junto com a
 atualização correspondente em [`docs/API.md`](docs/API.md).
 
+## [Não lançado]
+
+### Alterado
+
+- **Provedor de LLM trocado de Anthropic (API paga, em nuvem) para Ollama
+  local** (`app/services/llm.py`). Motivo: projeto escolar sem orçamento
+  para API paga — Ollama roda local, de graça, sem depender de internet.
+  `OLLAMA_MODEL` no `.env` escolhe o modelo (padrão: `qwen2.5:3b`; o grupo
+  também tem localmente o `epai`, um Llama 3.2 1B com fine-tune/system
+  prompt próprio da Escola Pinheiro, mais rápido porém mais simples — troque
+  em `OLLAMA_MODEL` se `qwen2.5:3b` for lento demais para o hardware do dia
+  da apresentação).
+  - **O contrato da API não muda**: rotas, payloads e formato de resposta de
+    `/api/chat` e `/api/chat/sync` são exatamente os mesmos — só a
+    implementação interna de `llm.py` mudou. Nada a atualizar em
+    `docs/API.md` por causa disso.
+  - `.env.example` trocou `ANTHROPIC_API_KEY`/`ANTHROPIC_MODEL` por
+    `OLLAMA_HOST`/`OLLAMA_MODEL`.
+  - `requirements.txt` perdeu a dependência `anthropic`.
+  - `knowledge.search_relevant` reduziu o número padrão de marcos injetados
+    no prompt de 5 para 3, pra manter o prompt menor e a resposta mais
+    rápida em hardware sem GPU.
+- Adicionado `run.sh`: sobe o backend com um único comando (`./run.sh`) —
+  cria `.venv`, instala dependências, cria `.env` se faltar, avisa se o
+  Ollama ou o modelo configurado não estiverem prontos, e inicia o servidor.
+
 ## [0.1.0] — 2026-09-22
 
 Primeira versão do backend.

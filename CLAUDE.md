@@ -19,7 +19,7 @@ O usuário faz perguntas ("como funcionavam os fantasmas do Pac-Man?", "o que mu
 - **FastAPI** (gera OpenAPI/Swagger automaticamente em `/docs` — o colega do front usa isso pra testar)
 - **Uvicorn** como servidor
 - **Pydantic v2** para schemas de request/response
-- **SDK oficial da Anthropic** (`anthropic`) para o modelo de linguagem, isolado em `app/services/llm.py` (se um dia trocar de provedor, só esse arquivo muda)
+- **Ollama local** (API HTTP em `http://localhost:11434`, via `httpx`) para o modelo de linguagem, isolado em `app/services/llm.py` (se um dia trocar de provedor, só esse arquivo muda). Sem custo, sem internet, sem chave de API — só precisa do `ollama serve` rodando e o modelo baixado (`ollama pull <modelo>`)
 - **pytest** + `httpx` para testes
 - Base de conhecimento em **JSON** (`data/timeline.json`) — sem banco de dados por enquanto
 - Configuração via `.env` com `pydantic-settings`
@@ -56,14 +56,11 @@ histor-ia-backend/
 ## Comandos
 
 ```bash
-# setup
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env             # e preencher a chave
+# setup (uma vez)
+ollama pull qwen2.5:3b           # ou o modelo que estiver em OLLAMA_MODEL no .env
 
-# rodar em dev
-uvicorn app.main:app --reload --port 8000
+# rodar em dev — ./run.sh cuida de venv, deps, .env e sobe o servidor
+./run.sh
 
 # testes
 pytest -q
@@ -74,14 +71,16 @@ Documentação interativa: http://localhost:8000/docs
 ## Variáveis de ambiente (`.env.example`)
 
 ```
-ANTHROPIC_API_KEY=
-ANTHROPIC_MODEL=claude-sonnet-5
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=qwen2.5:3b
 MAX_TOKENS=1024
 CORS_ORIGINS=http://localhost:5173,http://localhost:3000
 MAX_HISTORY_MESSAGES=20
 ```
 
-Nunca commitar `.env` nem chaves. `.env` deve estar no `.gitignore`.
+Nunca commitar `.env`. `.env` deve estar no `.gitignore`. Como o modelo roda
+local via Ollama, não existe chave de API pra proteger — mas `.env` continua
+sendo o lugar certo pra configuração específica de máquina (host, modelo).
 
 ## Contrato da API (resumo — detalhes em `docs/API.md`)
 
@@ -195,7 +194,7 @@ Eras sugeridas: `pioneiros`, `arcade`, `3d-e-taticas`, `mundos-vivos`, `aprendiz
 - Respostas curtas por padrão (até ~4 parágrafos), a não ser que o usuário peça mais.
 - Ao final do stream, o backend envia no evento `sources` os `id`s dos marcos usados, para o front poder mostrar links/cards.
 
-Estratégia de recuperação (simples, sem vetor por enquanto): `knowledge.py` faz busca por palavras-chave em `titulo`, `tags`, `tecnica` e `ano`, pega os até 5 marcos mais relevantes e injeta no prompt. Se nada casar, injeta os resumos de todas as eras.
+Estratégia de recuperação (simples, sem vetor por enquanto): `knowledge.py` faz busca por palavras-chave em `titulo`, `tags`, `tecnica` e `ano`, pega os até 3 marcos mais relevantes e injeta no prompt (número baixo de propósito — o modelo roda local via Ollama em hardware modesto, e um prompt menor responde bem mais rápido). Se nada casar, injeta os resumos de todas as eras.
 
 ## Regras para o Claude Code
 

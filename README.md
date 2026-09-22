@@ -18,27 +18,50 @@ desenvolvido por outra pessoa do grupo.
 
 - Python 3.10+ · [FastAPI](https://fastapi.tiangolo.com/) · [Uvicorn](https://www.uvicorn.org/)
 - Pydantic v2 + `pydantic-settings` para schemas e configuração
-- [SDK oficial da Anthropic](https://github.com/anthropics/anthropic-sdk-python), isolado em `app/services/llm.py`
+- [Ollama](https://ollama.com) local (modelo de linguagem rodando na própria máquina, sem custo e sem internet), isolado em `app/services/llm.py`
 - Base de conhecimento em JSON (`data/timeline.json`) — sem banco de dados
 - `pytest` + `httpx` para testes (o LLM é sempre mockado nos testes)
 
 ## Como rodar
 
+Precisa do [Ollama](https://ollama.com/download) instalado e rodando
+(`ollama serve`, ou já roda sozinho depois da instalação), com o modelo
+baixado:
+
+```bash
+ollama pull qwen2.5:3b           # ou outro modelo — veja OLLAMA_MODEL no .env
+```
+
+Depois, na primeira vez ou sempre que quiser subir o servidor:
+
+```bash
+./run.sh
+```
+
+Esse script cria o `.venv` se não existir, instala as dependências, cria o
+`.env` a partir do `.env.example` se não existir, avisa se o Ollama ou o
+modelo configurado não estiverem prontos, e sobe o servidor com reload
+automático. Não precisa ativar o venv manualmente nem lembrar do comando do
+uvicorn — só rodar `./run.sh` de novo toda vez.
+
+Se preferir os passos manuais:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env             # depois edite o .env e cole sua ANTHROPIC_API_KEY
+cp .env.example .env             # padrão já aponta pro Ollama local, não precisa editar
 uvicorn app.main:app --reload --port 8000
 ```
 
 Docs interativas (Swagger): http://localhost:8000/docs
 Contrato completo da API: [`docs/API.md`](docs/API.md)
 
-Sem uma `ANTHROPIC_API_KEY` válida no `.env`, todas as rotas de conteúdo
-(`/api/health`, `/api/eras`, `/api/timeline*`) funcionam normalmente — só as
-rotas de chat (`/api/chat`, `/api/chat/sync`) respondem `503
-llm_unavailable`, que é o comportamento esperado.
+Se o Ollama não estiver rodando ou o modelo em `OLLAMA_MODEL` não estiver
+baixado, todas as rotas de conteúdo (`/api/health`, `/api/eras`,
+`/api/timeline*`) continuam funcionando normalmente — só as rotas de chat
+(`/api/chat`, `/api/chat/sync`) respondem `503 llm_unavailable`, que é o
+comportamento esperado.
 
 ### Testes
 
@@ -46,7 +69,7 @@ llm_unavailable`, que é o comportamento esperado.
 pytest -q
 ```
 
-Os testes nunca chamam a API da Anthropic de verdade — `app/services/llm.py`
+Os testes nunca chamam o Ollama de verdade — `app/services/llm.py`
 é sempre substituído por um fake (veja `tests/conftest.py`).
 
 ## Estrutura
@@ -54,6 +77,7 @@ Os testes nunca chamam a API da Anthropic de verdade — `app/services/llm.py`
 ```
 histor-ia-backend/
 ├── CHANGELOG.md
+├── run.sh                  # sobe tudo com um comando: ./run.sh
 ├── docs/API.md             # contrato oficial com o frontend
 ├── data/timeline.json      # base de conhecimento (eras + marcos históricos)
 ├── app/
@@ -63,7 +87,7 @@ histor-ia-backend/
 │   ├── routers/              # health, timeline, chat
 │   ├── schemas/               # modelos Pydantic de request/response
 │   └── services/
-│       ├── llm.py             # única camada que fala com a Anthropic
+│       ├── llm.py             # única camada que fala com o Ollama
 │       ├── knowledge.py       # carrega e busca marcos no timeline.json
 │       └── prompt.py          # monta o system prompt da persona
 └── tests/

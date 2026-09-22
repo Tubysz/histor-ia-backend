@@ -42,7 +42,7 @@ def _tokenize(text: str) -> set[str]:
     return {w for w in words if w not in _STOPWORDS and len(w) > 1}
 
 
-def search_relevant(query: str, max_results: int = 5) -> list[dict]:
+def search_relevant(query: str, max_results: int = 3) -> list[dict]:
     """Keyword search over titulo, tags, tecnica e ano. Retorna [] se nada casar."""
     query_tokens = _tokenize(query)
     if not query_tokens:
