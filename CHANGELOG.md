@@ -11,11 +11,9 @@ atualização correspondente em [`docs/API.md`](docs/API.md).
 - **Provedor de LLM trocado de Anthropic (API paga, em nuvem) para Ollama
   local** (`app/services/llm.py`). Motivo: projeto escolar sem orçamento
   para API paga — Ollama roda local, de graça, sem depender de internet.
-  `OLLAMA_MODEL` no `.env` escolhe o modelo (padrão: `qwen2.5:3b`; o grupo
-  também tem localmente o `epai`, um Llama 3.2 1B com fine-tune/system
-  prompt próprio da Escola Pinheiro, mais rápido porém mais simples — troque
-  em `OLLAMA_MODEL` se `qwen2.5:3b` for lento demais para o hardware do dia
-  da apresentação).
+  `OLLAMA_MODEL` no `.env` escolhe o modelo (padrão: `qwen2.5:3b`; troque por
+  um modelo menor se `qwen2.5:3b` for lento demais para o hardware do dia da
+  apresentação).
   - **O contrato da API não muda**: rotas, payloads e formato de resposta de
     `/api/chat` e `/api/chat/sync` são exatamente os mesmos — só a
     implementação interna de `llm.py` mudou. Nada a atualizar em
