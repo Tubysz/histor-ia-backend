@@ -10,7 +10,7 @@ class Settings(BaseSettings):
 
     OLLAMA_HOST: str = "http://localhost:11434"
     OLLAMA_MODEL: str = "llama3.2:1b"
-    MAX_TOKENS: int = 400
+    MAX_TOKENS: int = 150
 
     CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
 

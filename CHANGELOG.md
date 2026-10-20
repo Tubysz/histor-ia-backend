@@ -8,6 +8,12 @@ atualização correspondente em [`docs/API.md`](docs/API.md).
 
 ### Alterado
 
+- Respostas mais curtas ainda: persona limitada a 2 frases (antes: 2
+  parágrafos / 3-4 frases) e `MAX_TOKENS` de 400 para 150. Motivo: o
+  frontend é uma assistente só de voz (TTS lê a resposta em voz alta), então
+  resposta longa = espera longa pro visitante ouvir tudo, em cima do tempo
+  de geração já lento no hardware local.
+
 - **Provedor de LLM trocado de Anthropic (API paga, em nuvem) para Ollama
   local** (`app/services/llm.py`). Motivo: projeto escolar sem orçamento
   para API paga — Ollama roda local, de graça, sem depender de internet.
