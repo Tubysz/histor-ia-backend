@@ -38,6 +38,9 @@ def get_marco(marco_id: str) -> dict | None:
 
 
 def _tokenize(text: str) -> set[str]:
+    # Remove dots before splitting so acronyms like "F.E.A.R." become one
+    # token ("fear") instead of four single letters that get filtered out.
+    text = text.replace(".", "")
     words = re.findall(r"[a-zà-ú0-9]+", text.lower())
     return {w for w in words if w not in _STOPWORDS and len(w) > 1}
 

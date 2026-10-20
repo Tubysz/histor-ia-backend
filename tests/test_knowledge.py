@@ -11,6 +11,15 @@ def test_search_relevant_matches_year():
     assert any(m["id"] == "deep-blue-1997" for m in results)
 
 
+def test_search_relevant_matches_dotted_acronym_title():
+    # Regression: "F.E.A.R." tokenized naively splits into four single
+    # letters ("f", "e", "a", "r"), which the min-length filter then drops,
+    # leaving zero search tokens and silently falling back to era summaries
+    # instead of the actual marco.
+    results = knowledge.search_relevant("O que foi o F.E.A.R.?")
+    assert any(m["id"] == "fear-2005" for m in results)
+
+
 def test_search_relevant_returns_empty_when_nothing_matches():
     results = knowledge.search_relevant("qual é a capital da frança")
     assert results == []
