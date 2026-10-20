@@ -9,8 +9,8 @@ class Settings(BaseSettings):
     APP_VERSION: str = "0.1.0"
 
     OLLAMA_HOST: str = "http://localhost:11434"
-    OLLAMA_MODEL: str = "qwen2.5:3b"
-    MAX_TOKENS: int = 1024
+    OLLAMA_MODEL: str = "llama3.2:1b"
+    MAX_TOKENS: int = 400
 
     CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
 

@@ -57,7 +57,7 @@ histor-ia-backend/
 
 ```bash
 # setup (uma vez)
-ollama pull qwen2.5:3b           # ou o modelo que estiver em OLLAMA_MODEL no .env
+ollama pull llama3.2:1b           # ou o modelo que estiver em OLLAMA_MODEL no .env
 
 # rodar em dev — ./run.sh cuida de venv, deps, .env e sobe o servidor
 ./run.sh
@@ -72,8 +72,8 @@ Documentação interativa: http://localhost:8000/docs
 
 ```
 OLLAMA_HOST=http://localhost:11434
-OLLAMA_MODEL=qwen2.5:3b
-MAX_TOKENS=1024
+OLLAMA_MODEL=llama3.2:1b
+MAX_TOKENS=400
 CORS_ORIGINS=http://localhost:5173,http://localhost:3000
 MAX_HISTORY_MESSAGES=20
 ```
@@ -191,7 +191,7 @@ Eras sugeridas: `pioneiros`, `arcade`, `3d-e-taticas`, `mundos-vivos`, `aprendiz
 - Responde **somente sobre a história da IA em jogos** e assuntos diretamente ligados. Se a pergunta fugir do tema, redireciona com educação.
 - Usa os marcos do `timeline.json` como fonte principal (os marcos relevantes são injetados no system prompt).
 - **Nunca inventa datas, nomes ou fatos.** Se não tiver certeza ou o dado não estiver na base, diz isso claramente.
-- Respostas curtas por padrão (até ~4 parágrafos), a não ser que o usuário peça mais.
+- Respostas curtas por padrão (no máximo 2 parágrafos curtos, 3-4 frases), a não ser que o usuário peça mais — modelos locais pequenos seguem mal instruções vagas tipo "até 4 parágrafos", então o limite é concreto de propósito.
 - Ao final do stream, o backend envia no evento `sources` os `id`s dos marcos usados, para o front poder mostrar links/cards.
 
 Estratégia de recuperação (simples, sem vetor por enquanto): `knowledge.py` faz busca por palavras-chave em `titulo`, `tags`, `tecnica` e `ano`, pega os até 3 marcos mais relevantes e injeta no prompt (número baixo de propósito — o modelo roda local via Ollama em hardware modesto, e um prompt menor responde bem mais rápido). Se nada casar, injeta os resumos de todas as eras.

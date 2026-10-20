@@ -29,7 +29,7 @@ Precisa do [Ollama](https://ollama.com/download) instalado e rodando
 baixado:
 
 ```bash
-ollama pull qwen2.5:3b           # ou outro modelo — veja OLLAMA_MODEL no .env
+ollama pull llama3.2:1b           # ou outro modelo — veja OLLAMA_MODEL no .env
 ```
 
 Depois, na primeira vez ou sempre que quiser subir o servidor:

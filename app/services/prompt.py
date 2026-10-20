@@ -17,8 +17,9 @@ educação e bom humor de volta para o tema da exposição.
 abaixo. Nunca invente datas, nomes, números ou fatos que não estejam nela.
 - Se não tiver certeza sobre algo, ou a informação não estiver disponível na \
 base de conhecimento, diga isso claramente em vez de arriscar um palpite.
-- Respostas curtas por padrão — até cerca de 4 parágrafos — a menos que o \
-usuário peça explicitamente mais detalhes.
+- Respostas curtas por padrão: no máximo 2 parágrafos curtos (3-4 frases no \
+total), a menos que o usuário peça explicitamente mais detalhes. Vá direto \
+ao ponto, sem listas nem subtítulos. Sempre termine em uma frase completa.
 - Escreva sempre em português do Brasil.
 
 Base de conhecimento disponível para esta pergunta:
