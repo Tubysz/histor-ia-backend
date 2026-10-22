@@ -72,6 +72,42 @@ pytest -q
 Os testes nunca chamam o Ollama de verdade — `app/services/llm.py`
 é sempre substituído por um fake (veja `tests/conftest.py`).
 
+## Expor pela internet (pra usar com o frontend publicado)
+
+O [frontend](https://github.com/SquareBurst35/Histor.ia-FrontEnd) pode estar
+publicado em outro lugar (ex.: GitHub Pages) enquanto este backend roda numa
+máquina local — a de quem estiver com o Ollama instalado. Pra isso funcionar,
+essa máquina local precisa ficar alcançável pela internet durante a
+apresentação:
+
+1. Suba o backend normalmente (`./run.sh` — já escuta em `0.0.0.0`, não só
+   `localhost`).
+2. Em outro terminal, abra um túnel até ele. Mais simples, sem precisar de
+   conta — [Cloudflare Tunnel](https://github.com/cloudflare/cloudflared):
+   ```bash
+   cloudflared tunnel --url http://localhost:8000
+   ```
+   Isso imprime uma URL pública tipo `https://algo-aleatorio.trycloudflare.com`.
+   Ela muda toda vez que você roda o comando de novo — não precisa ser
+   sempre a mesma.
+3. Adicione a URL do frontend publicado em `CORS_ORIGINS` no `.env` (vírgula
+   separa múltiplas origens) e reinicie o backend:
+   ```
+   CORS_ORIGINS=http://localhost:5173,https://squareburst35.github.io
+   ```
+4. Abra o frontend publicado com `?api=` apontando pra URL do túnel + `/api`,
+   por exemplo:
+   ```
+   https://squareburst35.github.io/Histor.ia-FrontEnd/?api=https://algo-aleatorio.trycloudflare.com/api
+   ```
+   O frontend salva essa URL no navegador (`localStorage`) — só precisa
+   passar o `?api=` de novo se trocar de computador, limpar os dados do
+   site, ou abrir um túnel novo com outra URL.
+
+Isso expõe sua API (e o Ollama por trás dela) pra qualquer um com a URL do
+túnel, sem autenticação — é razoável pra uma demonstração de poucas horas,
+não deixe isso rodando indefinidamente.
+
 ## Estrutura
 
 ```

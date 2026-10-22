@@ -6,7 +6,16 @@ atualização correspondente em [`docs/API.md`](docs/API.md).
 
 ## [Não lançado]
 
+### Adicionado
+
+- Seção "Expor pela internet" no README: como rodar o backend numa máquina
+  e consumir de um frontend publicado em outra rede, via túnel (Cloudflare
+  Tunnel) + `CORS_ORIGINS` + o parâmetro `?api=` do frontend.
+
 ### Alterado
+
+- `run.sh` agora sobe o uvicorn em `--host 0.0.0.0` (antes: só `localhost`),
+  necessário pra ser alcançável por um túnel ou pela rede local.
 
 - Respostas mais curtas ainda: persona limitada a 2 frases (antes: 2
   parágrafos / 3-4 frases) e `MAX_TOKENS` de 400 para 150. Motivo: o

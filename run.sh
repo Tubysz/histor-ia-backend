@@ -36,4 +36,7 @@ if [ -n "$MODEL" ] && ! ollama list 2>/dev/null | grep -q "^${MODEL}"; then
 fi
 
 echo "==> Subindo em http://localhost:8000 (docs em http://localhost:8000/docs)"
-exec uvicorn app.main:app --reload --port 8000
+echo "    Escutando em 0.0.0.0 — acessível pela rede local e por túneis"
+echo "    (veja 'Expor pela internet' no README para usar com um frontend"
+echo "    publicado em outro lugar)."
+exec uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
